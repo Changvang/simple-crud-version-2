@@ -30,7 +30,8 @@ class Index extends React.Component<IProps, IState>{
     }
 
     public componentDidMount(){
-        BaseService.getAll<Person>('/person').then((rp)=>{
+        console.log("Index didmount");
+        BaseService.getAll<Person>('/persons').then((rp)=>{
             if(rp.Status){
                 const data = rp.Data;
                 const listPersons = new Array<Person>();

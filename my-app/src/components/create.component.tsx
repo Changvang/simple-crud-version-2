@@ -49,7 +49,8 @@ class Create extends React.Component<IProps, IState>{
     }
 
     private onSave = () => {
-        BaseService.create<Person>("/person/create", this.state.person).then(
+        console.log(this.state.person)
+        BaseService.create<Person>("/persons/create", this.state.person).then(
             (rp) => {
                 if(rp.Status){
                     toastr.success("Member saved");

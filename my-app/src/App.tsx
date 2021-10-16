@@ -19,7 +19,7 @@ const App: React.FC = () => {
           <div className='collapse navbar-collapse'>
             <ul className="navbar-nav mr-auto">
               <li className='nav-item'>
-                <Link to={''} className='nav-link'>HOME</Link>
+                <Link to={'/'} className='nav-link'>HOME</Link>
               </li>
               <li className='nav-item'>
                 <Link to={'/create'} className='nav-link'>CREATE</Link>
@@ -32,9 +32,9 @@ const App: React.FC = () => {
         </nav>
         <Switch>
           <Route exact path='/create' component={Create}/>
-          <Route path='/' component={Home}/>
           <Route exact path='/index' component={Index}/>
           <Route exact path='/edit/:id' component={Edit}/>
+          <Route path='/' component={Home}/>
         </Switch>
       </div>
     </Router>

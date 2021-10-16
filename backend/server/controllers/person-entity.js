@@ -5,9 +5,9 @@ import Person from "../models/person.js";
 export function createPerson(req, res) {
     const person = new Person({
         _id: mongoose.Types.ObjectId(),
-        fullname: req.body.fullname,
-        address: req.body.address,
-        age: req.body.age,
+        fullname: req.body.FullName,
+        address: req.body.Address,
+        age: req.body.Age,
     });
 
     return person
@@ -71,7 +71,13 @@ export function getSinglePerson(req, res) {
   // update person
 export function updatePerson(req, res) {
     const id = req.params.personId;
-    const updateObject = req.body;
+    const body = req.body;
+    const updateObject = new Person({
+      fullname: req.body.FullName,
+      address: req.body.Address,
+      age: req.body.Age,
+    });
+    console.log(updateObject);
     Person.update({ _id:id }, { $set:updateObject })
       .exec()
       .then(() => {
@@ -94,10 +100,15 @@ export function deletePerson(req, res) {
     const id = req.params.personId;
     Person.findByIdAndRemove(id)
       .exec()
-      .then(()=> res.status(204).json({
-        success: true,
-      }))
-      .catch((err) => res.status(500).json({
-        success: false,
-      }));
+      .then(()=> {
+        console.log("delete");
+        res.status(200).json({
+          success: true,
+        });
+      })
+      .catch((err) => {
+        res.status(500).json({
+          success: false,
+        })
+      });
   }

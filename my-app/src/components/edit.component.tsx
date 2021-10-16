@@ -49,7 +49,7 @@ class Edit extends React.Component<IProps, IState>{
     }
 
     public componentDidMount(){
-        BaseService.get<Person>('/person/edit/', this.props.match.params.id).then(
+        BaseService.get<Person>('/persons/edit/', this.props.match.params.id).then(
             (rp) => {
                 if(rp.Status){
                     const person = rp.Data;
@@ -64,7 +64,7 @@ class Edit extends React.Component<IProps, IState>{
     }
 
     private onSave = () => {
-        BaseService.update<Person>("/person/update", this.props.match.params.id, this.state.person).then(
+        BaseService.update<Person>("/persons/update/", this.props.match.params.id, this.state.person).then(
             (rp) => {
                 if(rp.Status){
                     toastr.success("Member saved");

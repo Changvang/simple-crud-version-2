@@ -8,7 +8,8 @@ import BaseService from "../services/base.service";
 import * as toatr from "toastr";
 
 function Del(Id?: string){
-    BaseService.delete("/person/del/", {
+    console.log("Delete id:" + Id);
+    BaseService.delete("/persons/del/", {
         id: Id,
     }).then((rp) => {
         if(rp.Status){
